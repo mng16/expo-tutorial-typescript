@@ -7,19 +7,23 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "ts:check": "tsc"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "^6.0.2",
     "expo": "~49.0.7",
+    "expo-dev-client": "^2.4.8",
     "expo-font": "~11.4.0",
+    "expo-image-picker": "~14.3.2",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.0",
-    "expo-splash-screen": "~0.20.5",
+    "expo-splash-screen": "^0.20.5",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
     "expo-web-browser": "~12.3.2",
