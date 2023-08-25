@@ -1,53 +1,41 @@
-import { StyleSheet } from "react-native";
-import { useCallback } from "react";
-import EditScreenInfo from "../../components/EditScreenInfo";
-import { Text, View } from "../../components/Themed";
-import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
+import { StyleSheet, useColorScheme } from "react-native";
+import { View } from "../../components/Themed";
 import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { useFonts as useFontsGoogle, Inter_900Black } from "@expo-google-fonts/inter";
+import { Paragraph, Spacer, Stack, TamaguiProvider, Theme, YStack, Text, styled } from "tamagui";
+import { StatusBar } from "expo-status-bar";
+import config from "../../tamagui.config";
+import { Circle } from "../../components/tamagui-components/Circle";
 
-SplashScreen.preventAutoHideAsync();
+export default function TabOneScreen() {
+  const colorScheme = useColorScheme();
 
-function HomeScreen() {
-  const insets = useSafeAreaInsets();
-
-  const [fontsLoaded, fontError] = useFonts({
-    "Inter-Black": require("../../assets/fonts/Inter-Black.otf"),
+  const [loaded] = useFonts({
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
+  if (!loaded) {
     return null;
   }
 
   return (
-    <View
-      style={{ flex: 1, paddingTop: insets.top, backgroundColor: "white" }}
-      onLayout={onLayoutRootView}
-    >
-      <Text style={{ fontSize: 28 }}>Content is in safe area.</Text>
-      <Text style={{ fontFamily: "Inter-Black", fontSize: 30, color: "#000000" }}>Inter Black</Text>
-      <Text style={{ fontSize: 30, color: "#000000" }}>Platform Default</Text>
-    </View>
-  );
-}
-
-export default function TabOneScreen() {
-  return (
-    <SafeAreaProvider>
-      {/* <View style={styles.container}>
-        <Text style={styles.title}>Hello, world!</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <EditScreenInfo path="app/(tabs)/index.tsx" />
-      </View> */}
-      <HomeScreen />
-    </SafeAreaProvider>
+    <TamaguiProvider config={config}>
+      <Theme name="light">
+        {/* <YStack f={1} jc="center" ai="center" backgroundColor={"$backgroundSoft"}>
+          <Paragraph color="$color" jc="center">
+            {colorScheme}
+          </Paragraph>
+          <StatusBar style="auto" />
+        </YStack> */}
+        <Stack backgroundColor="red" borderRadius={10}>
+          <Text color="white">I AM TAMAGUI</Text>
+        </Stack>
+        <Text color="black">Hello avatar circle should be below this</Text>
+        {/* <AvatarCircle pin="floating" featured />
+        <SizedButton>This is a sized button</SizedButton> */}
+        <Circle x={10} y={10} backgroundColor="red" />
+      </Theme>
+    </TamaguiProvider>
   );
 }
 

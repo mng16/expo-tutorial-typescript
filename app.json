@@ -20,7 +20,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png"
       },
-      "package": "com.yourcompany.yourappname",
+      // "package": "expo-tutorial-typescript",
       "versionCode": 1
     },
     "web": {

@@ -1,19 +1,44 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+import * as Colors from "@tamagui/colors";
 
-export default {
-  light: {
-    text: '#000',
-    background: '#fff',
-    tint: tintColorLight,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#fff',
-    background: '#000',
-    tint: tintColorDark,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorDark,
-  },
+// nice and flat
+
+export const light = {
+  ...Colors.blue,
+  ...Colors.gray,
+  ...Colors.grayA,
+  ...Colors.green,
+  ...Colors.indigo,
+  ...Colors.orange,
+  ...Colors.pink,
+  ...Colors.purple,
+  ...Colors.red,
+  ...Colors.violet,
+  ...Colors.yellow,
 };
+
+export const dark = {
+  ...Colors.blueDark,
+  ...Colors.grayDark,
+  ...Colors.grayDarkA,
+  ...Colors.greenDark,
+  ...Colors.indigoDark,
+  ...Colors.orangeDark,
+  ...Colors.pinkDark,
+  ...Colors.purpleDark,
+  ...Colors.redDark,
+  ...Colors.violetDark,
+  ...Colors.yellowDark,
+};
+
+export const darkColorsPostfixed = Object.fromEntries(
+  // Dark
+  Object.entries(dark).map(([k, v]) => [`${k}Dark`, v])
+) as {
+  [key in `${keyof typeof dark}Dark`]: string;
+};
+
+export type ColorNamesLight = keyof typeof light;
+export type ColorNamesDark = keyof typeof dark;
+
+export const colorNamesLight = Object.keys(light) as ColorNamesLight[];
+export const colorNamesDark = Object.keys(dark) as ColorNamesDark[];
