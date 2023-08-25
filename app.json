@@ -20,7 +20,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png"
       },
-      // "package": "expo-tutorial-typescript",
+      "package": "com.travel.tamaggui",
       "versionCode": 1
     },
     "web": {
